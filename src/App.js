@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import Person from './person';
+import Heading from './heading';
+import data from './data';
 
-function App() {
+export default function App(){
+
+
+let [persons , changepersons] = React.useState(data)
+
+
+    let jsxperson = persons.map(function(person){
+      return <Person name={person.Name} age={person.Age} img={person.img} /> 
+    })
+
+    function clear(){
+      changepersons([])
+    }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <main>
+      <div className="container">
+              <Heading birthdays={persons.length} />
+              {jsxperson}
+             
+               
+            
+            <button onClick={clear}>Clear all</button>
+      </div>
+    </main>
+  )
 
-export default App;
+
+}
