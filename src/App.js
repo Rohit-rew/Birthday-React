@@ -10,8 +10,8 @@ export default function App(){
 let [persons , changepersons] = React.useState(data)
 
 
-    let jsxperson = persons.map(function(person){
-      return <Person name={person.Name} age={person.Age} img={person.img} /> 
+    let jsxperson = persons.map(function(person , i){
+      return <Person key={i} name={person.Name} age={person.Age} img={person.img} /> 
     })
 
     function clear(){
